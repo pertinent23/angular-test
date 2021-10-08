@@ -1,0 +1,15 @@
+<div class="content-test container-fluid bg-light d-flex flex-column py-4">
+    <div class="w-100"> - Fr@nckkk Pertinent </div>
+    <div class="w-100 px-3 px-sm-4 px-md-5 content-items py-5">
+        <app-item 
+            itemName="item1"
+            *ngFor="let item of items"
+            [itemName]="item.name"
+            [itemDescription]="item.description"
+            [color]="item.color ? 'success' : 'infos' "
+        ></app-item>
+    </div>
+    <div class="w-100 d-flex justify-content-end align-items-center pr-4">
+        <button class="btn-danger btn" [disabled]="!isAuth" (click)="allDelete()"> All delete </button>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="list-group-item shadow rounded py-4 mb-3 item" [ngStyle]="{borderTopColor: 'var(getColor())'}" *ngIf="visible"> 
+    <div class="w-100 py-3">
+        {{ now | async | date }}
+    </div>
+    I'm an item of the list <br>
+    named : {{ getName() }} <br>
+    description: {{ getDescription() }} <br>
+    <div class="w-100 py-4 content-input">
+        <input type="text" class="form-control" [(ngModel)]="itemName">
+    </div>
+    <div class="w-100 d-flex justify-content-end align-items-center pr-4">
+        <button class="btn-danger btn" (click)="delete()"> delete </button>
+    </div>
+</div>
