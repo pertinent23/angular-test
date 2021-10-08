@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ItemProvider } from '../services/items.provider';
 
 @Component( {
     selector: 'app-item',
@@ -9,7 +10,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ItemComponent implements OnInit {
     @Input() itemName : string = 'appareil';
     @Input() itemDescription : string = '... a short description.';
-    @Input() color : string = '#000000';
+    @Input() active : boolean = false;
+    @Input() index : number = 0;
     now : Promise<Date> = new Promise( ( resolve, reject ) => {
         const date = new Date();
         setTimeout(
@@ -20,7 +22,13 @@ export class ItemComponent implements OnInit {
     } );
     visible : boolean = true;
 
-    constructor() { }
+    constructor( private provider: ItemProvider ) {
+        /** 
+            *
+            * Body of the 
+            * object  
+        */
+    }
 
     ngOnInit(): void {}
 
@@ -32,11 +40,19 @@ export class ItemComponent implements OnInit {
         return this.itemDescription;
     }
 
-    getColor() : string {
-        return this.color;
+    getStatus() : boolean {
+        return this.active;
     }
 
-    delete() : void {
-        this.visible = false;
+    getColor() : string {
+        return this.getStatus() ? '#55FF88' : '#FF1122';
+    }
+
+    activeItem() {
+        this.provider.activeItem( this.index );
+    }
+
+    desactiveItem() {
+        this.provider.desactiveItem( this.index );
     }
 }

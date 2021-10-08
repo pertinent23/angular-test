@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemProvider, Items } from '../services/items.provider';
 
 @Component( {
     selector: 'app-item-view',
@@ -7,14 +8,10 @@ import { Component, OnInit } from '@angular/core';
 } )
 
 export class ItemViewComponent implements OnInit {
-    isAuth = false;
-    items : { name: string; description: string, color?: boolean }[ ] = [
-        { name: 'bread', description: 'bakery', color: true },
-        { name: 'cake', description: 'pastry cook', color: false },
-        { name: 'meat', description: 'bucher', color: true }
-    ];
+    isAuth : boolean = false;
+    items : Items[] = [];
 
-    constructor() {
+    constructor( private provider : ItemProvider ) {
         setTimeout(
             () => {
               this.isAuth = true;
@@ -22,9 +19,23 @@ export class ItemViewComponent implements OnInit {
         );
     }
 
-    allDelete() {
-        console.log( 'all-delete' );
+    allActived() : void {
+        this.provider.activeAll();
     }
 
-    ngOnInit(): void {}
+    allDesactived() : void {
+        this.provider.desactiveAll();
+    }
+
+    ngOnInit(): void {
+        this.items = this.provider.getItems();
+    }
+
+    isAllActived() : boolean {
+        return this.provider.isAllActived();
+    }
+
+    isAllDesactived() : boolean {
+        return this.provider.isAllDesactived();
+    }
 }

@@ -1,4 +1,8 @@
-<div class="list-group-item shadow rounded py-4 mb-3 item" [ngStyle]="{borderTopColor: 'var(getColor())'}" *ngIf="visible"> 
+<div class="list-group-item shadow rounded py-4 mb-3 item"> 
+    <div class="w-100 py-2 d-flex align-items-center">
+        <div class="status mr-3"  [style.background-color]="getColor()"></div>
+        {{ getStatus() ? 'actif' : 'inactif' }}
+    </div>
     <div class="w-100 py-3">
         {{ now | async | date }}
     </div>
@@ -9,6 +13,7 @@
         <input type="text" class="form-control" [(ngModel)]="itemName">
     </div>
     <div class="w-100 d-flex justify-content-end align-items-center pr-4">
-        <button class="btn-danger btn" (click)="delete()"> delete </button>
+        <button class="btn-success btn mr-3" [disabled]="active" (click)="activeItem()"> active </button>
+        <button class="btn-danger btn" [disabled]="!active" (click)="desactiveItem()"> desactive </button>
     </div>
 </div>
