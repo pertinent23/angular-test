@@ -19,8 +19,9 @@ export class ItemComponent implements OnInit {
                 resolve( date );
             }, 2000
         );
-    } );
+    } )
     visible : boolean = true;
+    isLoaded : boolean = true;
 
     constructor( private provider: ItemProvider ) {
         /** 

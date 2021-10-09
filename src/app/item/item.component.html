@@ -3,8 +3,10 @@
         <div class="status mr-3"  [style.background-color]="getColor()"></div>
         {{ getStatus() ? 'actif' : 'inactif' }}
     </div>
-    <div class="w-100 py-3">
-        {{ now | async | date }}
+    <div class="w-100">
+        <span class="py-3 container-fluid">
+            {{ now | async | date : 'short' }}
+        </span>
     </div>
     I'm an item of the list <br>
     named : {{ getName() }} <br>
