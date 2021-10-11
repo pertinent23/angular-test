@@ -25,6 +25,8 @@ export class ItemProvider {
         }
     ];
 
+    static auth : boolean = false;
+
     activeAll() : void {
         const 
             context = this;
@@ -75,5 +77,13 @@ export class ItemProvider {
 
     getItems() : Items [] {
         return this.items;
+    }
+
+    static setAuth( val : boolean ) {
+        ItemProvider.auth = val;
+    }
+
+    static getAuth() : boolean {
+        return ItemProvider.auth;
     }
 }

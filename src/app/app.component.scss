@@ -4,12 +4,15 @@
 }
 
 .header{
-    font-size: 2.5em;
     letter-spacing: 0.15em;
+    font-weight: 600;
 }
 
-.header div,
 .header a{
-    font-size: 0.9em !important;
+    font-size: 1.1em !important;
     text-decoration: none !important;
+}
+
+.header span{
+    font-size: 2.5em;
 }

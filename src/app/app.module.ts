@@ -9,11 +9,13 @@ import { ItemViewComponent } from './item-view/item-view.component';
 import { AuthComponent } from './auth/auth.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ItemProvider } from './services/items.provider';
+import { AddItemComponent } from './add-item/add-item.component';
 
 const routeList : Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'items', component: ItemViewComponent },
-  { path: '', component: ItemViewComponent }
+  { path: 'add',  component: AddItemComponent },
+  { path: '', component: AuthComponent }
 ];
 
 @NgModule({
@@ -21,7 +23,8 @@ const routeList : Routes = [
     AppComponent,
     ItemComponent,
     ItemViewComponent,
-    AuthComponent
+    AuthComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,
